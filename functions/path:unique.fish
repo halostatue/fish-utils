@@ -29,6 +29,6 @@ function path:unique -d 'Ensures that the provided value is unique in $PATH or $
 
         $prepend
         and set $var $item (string match -vr "^$item\$" $$var)
-        or set $var (string match -vr "$item\$" $$var) $item
+        or set $var (string match -vr "^$item\$" $$var) $item
     end
 end

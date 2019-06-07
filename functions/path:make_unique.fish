@@ -1,5 +1,5 @@
 function path:make_unique -d 'Makes sure that each entry in $PATH or $MANPATH is uniq, with order preserved.'
-    argparse -n(status function) -X0 -xm,c 'm/man' 'c/cdpath' 'n' -- $argv
+    argparse -n(status function) -X0 -xm,c 'm/man' 'c/cdpath' -- $argv
     or return
 
     set -l var PATH
@@ -11,7 +11,7 @@ function path:make_unique -d 'Makes sure that each entry in $PATH or $MANPATH is
     set -l value
 
     for item in $$var
-        string match -qe $item $value
+        string match -qr "^$item\$" $value
         and continue
 
         set value $value $item

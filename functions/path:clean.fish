@@ -10,6 +10,6 @@ function path:clean -d 'Clean the specified paths from $PATH or $MANPATH'
     or set var CDPATH
 
     for item in $argv
-        set $var (string match -ve {$item} $$var)
+        set $var (string match -vr "^$item\$" $$var)
     end
 end

@@ -1,5 +1,5 @@
 function path:unique -d 'Ensures that the provided value is unique in $PATH or $MANPATH'
-    argparse -n(status function) -N1 'm/man' 'c/cdpath' 'a/append' 't/test' -xm,c -- $argv
+    argparse -n(status function) -N1 -xm,c 'm/man' 'c/cdpath' 'a/append' 't/test' -- $argv
     or return
 
     set -l var PATH

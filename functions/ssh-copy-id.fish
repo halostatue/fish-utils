@@ -4,11 +4,17 @@ function ssh-copy-id -d 'Install your public key on a remote machine.'
     # accept password authentication or one of the other keys in your ssh-agent
     # for this to work.
 
-    argparse -n(status function) -N1 'h/help' 'a-agent' 'i-id=+' -xa,i -- $argv
-    or return __usage:ssh-copy-id (status function) 1
+    argparse -n(status function) -N1 -xa,i 'h/help' 'a-agent' 'i-id=+' -- $argv
+    or begin
+        __usage:ssh-copy-id (status function) >&2
+        return 1
+    end
 
     test -z $_flag_help
-    or return __usage:ssh-copy-id (status function)
+    or begin
+        __usage:ssh-copy-id (status function)
+        return
+    end
 
     set -l files
     set -l identities
@@ -46,7 +52,7 @@ function ssh-copy-id -d 'Install your public key on a remote machine.'
         return __usage:ssh-copy-id (status function) 1
     end
 
-    if not count $identities
+    if not set -q identities
         echo >&2 Error: No identities found.
         return __usage:ssh-copy-id (status function) 1
     end
@@ -66,7 +72,7 @@ end
 function __usage:ssh-copy-id
     set -l message \
         "Usage: {$argv[1]} [[--id IDFILE]+|[--agent]] [user@]machine [ssh-args]
-Usage: {$argv[1]} -h|--help
+       {$argv[1]} -h|--help
 
 Copies one or more SSH identities from this computer to the remote computer.
 
@@ -84,11 +90,5 @@ When neither '-id IDFILE' nor '-agent' have been specified, then one of
 '~/.ssh/id_rsa.pub' or '~/.ssh/id_dsa.pub' will be used \(in that order\),
 if they exist. If neither exists, an error will be raised."
 
-    if test -z $argv[2]
-        or test $argv[2] -eq 0
-        printf '%s\n' $message
-    else
-        printf 1>&2 '%s\n' $message
-        return $argv[2]
-    end
+    printf '%s\n' $message
 end

@@ -1,15 +1,13 @@
 # halostatue/fish-utils
 
-Utility functions for the <a href=https://fishshell.com title="friendly
-interactive shell">fish shell</a>.
+Utility functions for [fish shell][]. Most have been ported from my zsh
+dotfiles.
 
-Most have been ported over from my zsh dotfiles.
-
-[![Releases](https://img.shields.io/github/release/halostatue/fish-utils.svg?label=latest)](https://github.com/halostatue/fish-utils/releases)
+[![Version][]][]
 
 ## Installation
 
-Install with [Fisher](https://github.com/jorgebucaran/fisher) (recommended):
+Install with [Fisher][] (recommended):
 
 ```fish
 fisher add halostatue/fish-utils
@@ -26,9 +24,17 @@ directory structure.
 
 ### System Requirements
 
-- [fish](https://github.com/fish-shell/fish-shell) 3.0+
+- [fish][] 3.0+
 
 ## Functions
+
+### addr
+
+Shows IPv4 addresses for the given interface or all interfaces.
+
+```fish
+addr
+```
 
 ### clone-tree
 
@@ -55,6 +61,14 @@ diga google.com
 ```
 
 Shorthand responses from dig.
+
+### digip
+
+Digs my public IP address.
+
+```fish
+digip
+```
 
 ### is:os — is:freebsd, is:linux, is:mac, is:ubuntu
 
@@ -102,6 +116,15 @@ variable.
 echo (latest_modified_file Rakefile Gemfile) # Rakefile
 set -l files Rakefile lib/tasks/*.rake
 echo (latest_modified_file $files) # lib/tasks/test.rake
+```
+
+### man.cx
+
+Open one or more manpages at `man.cx`.
+
+```fish
+man.cx sshd_config
+man.cx 5 ssh_config
 ```
 
 ### md5pwd
@@ -194,6 +217,14 @@ Prints the current working directory of the provided PID.
 test (pidwd %self) = $PWD; and echo Works
 ```
 
+### ports
+
+Shows processes listening on ports. Options are passed to `lsof`.
+
+```fish
+ports
+```
+
 ## rot13
 
 ```fish
@@ -205,9 +236,6 @@ echo N fvzcyr Pnrfne pvcure. | rot13 # A simple Caesar cipher.
 Returns true if the current shell was run from SSH.
 
 ## ssh-copy-id
-
-WARNING: This port of a tested shell script from a tested zsh script has not
-itself been tested.
 
 Copies one or more SSH public key file identities to the
 `~/.ssh/authorized_keys` file of a remote server.
@@ -225,3 +253,9 @@ the provided text.
 ## License
 
 [MIT](LICENCE.md)
+
+[fish shell]: https://fishshell.com "friendly interactive shell"
+[Version]: https://img.shields.io/github/tag/halostatue/fish-kiex.svg?label=Version
+[![Version][]]: https://github.com/halostatue/fish-kiex/releases
+[Fisher]: https://github.com/jorgebucaran/fisher
+[fish]: https://github.com/fish-shell/fish-shell

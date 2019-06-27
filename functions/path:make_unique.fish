@@ -1,10 +1,18 @@
-function path:make_unique -d 'Makes sure that each entry in $PATH or $MANPATH is uniq, with order preserved.'
+function path:make_unique -d 'Makes sure that each entry in $PATH, $CDPATH, or $MANPATH is uniq, with order preserved.'
     argparse -n(status function) -X0 -xm,c 'm/man' 'c/cdpath' -- $argv
     or return
 
     set -l var PATH
     test -z {$_flag_man}
-    or set var MANPATH
+    or begin
+        set var MANPATH
+        set -gq _halostatue_fish_utils_warned_manpath_make_unique
+        or begin
+            echo >&2 (status function)': MANPATH management is deprecated and will be removed in the next major version.'
+            set -g _halostatue_fish_utils_warned_manpath_make_unique 1
+        end
+    end
+
     test -z {$_flag_cdpath}
     or set var CDPATH
 

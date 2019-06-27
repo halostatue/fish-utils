@@ -1,10 +1,17 @@
-function path:unique -d 'Ensures that the provided value is unique in $PATH or $MANPATH'
+function path:unique -d 'Ensures that the provided value is unique in $PATH, $CDPATH, or $MANPATH'
     argparse -n(status function) -N1 -xm,c 'm/man' 'c/cdpath' 'a/append' 't/test' -- $argv
     or return
 
     set -l var PATH
     test -z {$_flag_man}
-    or set var MANPATH
+    or begin
+        set var MANPATH
+        set -gq _halostatue_fish_utils_warned_manpath_unique
+        or begin
+            echo >&2 (status function)': MANPATH management is deprecated and will be removed in the next major version.'
+            set -g _halostatue_fish_utils_warned_manpath_unique 1
+        end
+    end
 
     test -z {$_flag_cdpath}
     or set var CDPATH

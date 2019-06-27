@@ -1,4 +1,4 @@
-function path:before -d 'Prepend items to $PATH or $MANPATH uniquely'
+function path:before -d 'Prepend items to $PATH, $CDPATH, or $MANPATH uniquely'
     argparse -n(status function) -N1 -xm,c 'm/man' 'c/cdpath' 't/test' -- $argv
     or return
 

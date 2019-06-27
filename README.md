@@ -141,6 +141,8 @@ Manages $PATH, $MANPATH, and $CDPATH in a sane way. `path:after` and
 `path:before` are simple wrappers around `path:unique`. `path:unique` adds
 the list of paths provided to the global path variable.
 
+> MANPATH management will be removed in the next major version.
+
 #### path:unique Flags
 
 Without flags, `path:unique` and its wrappers will add the provided paths, in
@@ -172,6 +174,8 @@ echo $PATH # a b c /usr/local/bin
 
 Removes the provided path(s) from $PATH, $MANPATH, or $CDPATH.
 
+> MANPATH management will be removed in the next major version.
+
 #### path:clean Flags
 
 Without flags, `path:clean` will remove the provided paths from $PATH. This
@@ -193,6 +197,8 @@ echo $PATH # /usr/local/bin
 Run this once per type during initialization to ensure that your $PATH,
 $MANPATH, or $CDPATH do not contain duplicate entries. The order of the entries
 in the managed path variable will be preserved.
+
+> MANPATH management will be removed in the next major version.
 
 #### path:make_unique Flags
 

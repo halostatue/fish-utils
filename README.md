@@ -20,6 +20,7 @@ fisher add halostatue/fish-utils
 
 Copy `functions/*.fish` to your fish configuration directory preserving the
 directory structure.
+
 </details>
 
 ### System Requirements
@@ -28,81 +29,40 @@ directory structure.
 
 ## Functions
 
-### addr
+### await, signal
 
-Shows IPv4 addresses for the given interface or all interfaces.
+A process can `await` a `signal` provided by another process.
 
 ```fish
-addr
+process 1> await notifications
+process 2> echo 'Hello' | signal notifications
+process 1>
+'Hello'
 ```
+
+The `await` command may optionally have a parameter `--progress` that will
+print a '.' every second while waiting for the signal.
+
+### cat
+
+A wrapper around `bat` and `mdless` if either is installed.
 
 ### clone-tree
 
-```fish
-clone-tree source dest
-```
+Clones the entire directory structure of a `source` directory into another,
+using tar with pipes. if `target` does not exist, it will be created. If the
+command `pv` is present, it will be used to present a progress view.
 
-Clones the entire directory structure of a single directory into another,
-using tar with pipes.
+```fish
+clone-tree source target
+```
 
 ### dataurl
 
-```fish
-dataurl image.jpg | pbcopy
-```
-
 Creates a data-url base64 encoded value of the file.
 
-### dig1, diga
-
 ```fish
-dig1 google.com
-diga google.com
-```
-
-Shorthand responses from dig.
-
-### digip
-
-Digs my public IP address.
-
-```fish
-digip
-```
-
-### is:os — is:freebsd, is:linux, is:mac, is:ubuntu
-
-Tests that the current operating environment is the expected OS type. Most
-are implemented in terms of is:os, which is mostly a comparison tool for
-`uname -s`.
-
-```fish
-is:mac; and echo Yes; or echo No
-```
-
-### is:mac-at-least
-
-Determines whether the MacOS version is at least the version specified:
-
-```fish
-is:mac-at-least catalina; and echo Developer; or echo Normal
-```
-
-### is:mac-terminal
-
-Determines whether running on in MacOS and whether iTerm or Apple Terminal is
-running.
-
-### is:true
-
-Determines whether the value provided is a true value
-
-```fish
-is:true 1; and echo yes
-is:true yes; and echo yes
-is:true true; and echo yes
-is:true on; and echo yes
-is:true no; or echo no
+dataurl image.jpg | pbcopy
 ```
 
 ### latest_modified_file
@@ -118,15 +78,6 @@ set -l files Rakefile lib/tasks/*.rake
 echo (latest_modified_file $files) # lib/tasks/test.rake
 ```
 
-### man.cx
-
-Open one or more manpages at `man.cx`.
-
-```fish
-man.cx sshd_config
-man.cx 5 ssh_config
-```
-
 ### md5pwd
 
 Creates an MD5 hash for the current working directory.
@@ -134,86 +85,6 @@ Creates an MD5 hash for the current working directory.
 ### mess
 
 Creates a working 'mess' directory where new things may be played with.
-
-### path:after, path:before, path:unique
-
-Manages $PATH, $MANPATH, and $CDPATH in a sane way. `path:after` and
-`path:before` are simple wrappers around `path:unique`. `path:unique` adds
-the list of paths provided to the global path variable.
-
-> MANPATH management will be removed in the next major version.
-
-#### path:unique Flags
-
-Without flags, `path:unique` and its wrappers will add the provided paths, in
-the provided order, to the beginning of the $PATH, even if the value was
-already present. This means that:
-
-```fish
-echo $PATH # b /usr/local/bin
-path:unique a b c
-echo $PATH # a b c /usr/local/bin
-```
-
-- `-m`, `--man`: Manages $MANPATH instead of $PATH. Mutually exclusive with
-  `-c` (`--cdpath`).
-- `-c`, `--cdpath`: Manages $CDPATH instead of $PATH. Mutually exclusive with
-  `-m` (`--man`).
-- `-a`, `--append`: Appends the path list to the managed path. Not available on
-  `path:before` and `path:after`.
-
-    ```fish
-    echo $PATH # b /usr/local/bin
-    path:unique --append a b c
-    echo $PATH # /usr/local/bin a b c
-    ```
-
-- `-t`, `--test`: Only appends the provided path if it exists. Off by default.
-
-### path:clean
-
-Removes the provided path(s) from $PATH, $MANPATH, or $CDPATH.
-
-> MANPATH management will be removed in the next major version.
-
-#### path:clean Flags
-
-Without flags, `path:clean` will remove the provided paths from $PATH. This
-means that:
-
-```fish
-echo $PATH # b /usr/local/bin
-path:clean b
-echo $PATH # /usr/local/bin
-```
-
-- `-m`, `--man`: Manages $MANPATH instead of $PATH. Mutually exclusive with
-  `-c` (`--cdpath`).
-- `-c`, `--cdpath`: Manages $CDPATH instead of $PATH. Mutually exclusive with
-  `-m` (`--man`).
-
-### path:make_unique
-
-Run this once per type during initialization to ensure that your $PATH,
-$MANPATH, or $CDPATH do not contain duplicate entries. The order of the entries
-in the managed path variable will be preserved.
-
-> MANPATH management will be removed in the next major version.
-
-#### path:make_unique Flags
-
-Without flags, `path:make_unique` will manage $PATH. This means that:
-
-```fish
-echo $PATH # /usr/local/bin /usr/local/bin
-path:make_unique
-echo $PATH # /usr/local/bin
-```
-
-- `-m`, `--man`: Manages $MANPATH instead of $PATH. Mutually exclusive with
-  `-c` (`--cdpath`).
-- `-c`, `--cdpath`: Manages $CDPATH instead of $PATH. Mutually exclusive with
-  `-m` (`--man`).
 
 ## pidwd
 
@@ -223,12 +94,12 @@ Prints the current working directory of the provided PID.
 test (pidwd %self) = $PWD; and echo Works
 ```
 
-### ports
+## pipeset
 
-Shows processes listening on ports. Options are passed to `lsof`.
+Set one or more variables to the output of the pipe.
 
 ```fish
-ports
+cat README.md | pipeset -g readme
 ```
 
 ## rot13
@@ -237,31 +108,23 @@ ports
 echo N fvzcyr Pnrfne pvcure. | rot13 # A simple Caesar cipher.
 ```
 
-## run_from_ssh
-
-Returns true if the current shell was run from SSH.
-
-## ssh-copy-id
-
-Copies one or more SSH public key file identities to the
-`~/.ssh/authorized_keys` file of a remote server.
-
-## sshfp
-
-Create the text required for SSHFP DNS records (SSH fingerprint) for a host.
-
 ## title
 
 Sets the terminal title for the current shell. With `-c`/`--cwd` the current
 path will be put in the title either before, or with `-a`/`--after`, after
 the provided text.
 
+## urlencode
+
+URL encodes the provided string.
+
 ## License
 
 [MIT](LICENCE.md)
 
-[fish shell]: https://fishshell.com "friendly interactive shell"
-[Version]: https://img.shields.io/github/tag/halostatue/fish-kiex.svg?label=Version
+[fish shell]: https://fishshell.com 'friendly interactive shell'
+[version]: https://img.shields.io/github/tag/halostatue/fish-kiex.svg?label=Version
+
 [![Version][]]: https://github.com/halostatue/fish-kiex/releases
 [Fisher]: https://github.com/jorgebucaran/fisher
 [fish]: https://github.com/fish-shell/fish-shell

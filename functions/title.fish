@@ -1,24 +1,22 @@
 function title -d 'Set the terminal title'
-    argparse -n(status function) 'c/cwd' 'a/after' -- $argv
+    argparse 'c/cwd' 'a/after' -- $argv
     or return
 
     set -l title "$argv"
 
-    if not test -z $_flag_cwd
+    test -z $_flag_cwd; or begin
         set -l cwd (basename $PWD)
-        if test (string length $title) -ne 0
-            if test -z $_flag_after
-                set title "$cwd $title"
-            else
-                set title "$title $cwd"
-            end
-        else
+
+        if test -z $title
             set title $cwd
+        else
+            test -z $_flag_after
+            and set title "$cwd $title"
+            or set title "$title $cwd"
         end
     end
 
-    test -z $title
-    and title=Terminal
+    test -z $title; and set title Terminal
 
     echo "function fish_title; echo \"$title\"; end" | source -
 end

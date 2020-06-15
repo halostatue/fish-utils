@@ -1,7 +1,6 @@
 function pidwd -d 'Get the working directory of a provided PID'
-    set -q $argv[1]
-    or begin
-        echo 1>&2 Error: no PId provided
+    set -q argv[1]; or begin
+        echo >&2 Error: no PID provided
         return 1
     end
 

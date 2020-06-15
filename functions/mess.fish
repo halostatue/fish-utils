@@ -11,13 +11,14 @@ function mess -d 'Create a mess work path'
 
     if test -e $link
         and not test -L $link
-        echo "$link is not a symlink; something is wrong."
+        echo >&2 "$link is not a symlink; something is wrong."
     else
         if not command test $link -ef $current
             rm -f $link
             ln -s $current $link
         end
 
-        cd (string join '/' $current $argv)
+        set -l target (string join '/' $current $argv)
+        test -d $target; and cd $target; or cd $current
     end
 end

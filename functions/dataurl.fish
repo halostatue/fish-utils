@@ -1,6 +1,6 @@
 function dataurl -a file -d 'Create a data: URL from FILE'
-    if test -z $file
-        echo 1>&2 Error: file must be specified
+    test -z $file; and begin
+        echo >&2 Error: file must be specified
         return 1
     end
 

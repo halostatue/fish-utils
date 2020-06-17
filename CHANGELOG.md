@@ -1,5 +1,9 @@
 # halostatue/fish-utils Changelog
 
+## 2.0.1
+
+- Fixed a bug with `cat`.
+
 ## 2.0
 
 - Removed several core functions from `halostatue/fish-utils` and put them in

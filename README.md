@@ -10,7 +10,11 @@ dotfiles.
 Install with [Fisher][] (recommended):
 
 ```fish
+# Fisher 3.x
 fisher add halostatue/fish-utils
+
+# Fisher 4.0+: dependencies must be specified explicitly
+fisher install halostatue/fish-utils-core halostatue/fish-utils
 ```
 
 <details>

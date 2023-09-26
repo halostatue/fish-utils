@@ -3,17 +3,13 @@
 Utility functions for [fish shell][]. Most have been ported from my zsh
 dotfiles.
 
-[![Version][]][]
+<img src="https://img.shields.io/github/tag/halostatue/fish-kiex.svg?label=Version" alt "">
 
 ## Installation
 
 Install with [Fisher][] (recommended):
 
 ```fish
-# Fisher 3.x
-fisher add halostatue/fish-utils
-
-# Fisher 4.0+: dependencies must be specified explicitly
 fisher install halostatue/fish-utils-core halostatue/fish-utils
 ```
 
@@ -33,33 +29,30 @@ directory structure.
 
 ## Functions
 
-### await, signal
+### `clone-tree SOURCE TARGET [OPTIONS]
 
-A process can `await` a `signal` provided by another process.
-
-```fish
-process 1> await notifications
-process 2> echo 'Hello' | signal notifications
-process 1>
-'Hello'
-```
-
-The `await` command may optionally have a parameter `--progress` that will
-print a '.' every second while waiting for the signal.
-
-### cat
-
-A wrapper around `bat` and `mdless` if either is installed.
-
-### clone-tree
-
-Clones the entire directory structure of a `source` directory into another,
-using tar with pipes. if `target` does not exist, it will be created. If the
-command `pv` is present, it will be used to present a progress view.
+Clones the entire directory structure of a `SOURCE` directory into another,
+using tar with pipes. If `TARGET` does not exist, it will be created.
 
 ```fish
 clone-tree source target
 ```
+
+#### Options
+
+- `-p`, `--progress`: Enables the display of a progress bar. If `pv` is not
+  available, acts the same as `--verbose`. Mutually exclusive with `--verbose`.
+
+- `-v`, `--verbose`: Shows a verbose extract display. Mutually exclusive with
+  `--verbose`.
+
+- `-k`, `--keep-root`: If provided, keeps the source directory as the root of
+  the target files. That is, `clone-tree --keep-root SOURCE TARGET` will produce
+  the output of `TARGET/(basename SOURCE)/...`.
+
+### `color_test [--list[=SCALE]]`
+
+Displays either a color test list or a color test grid. If the list
 
 ### dataurl
 
@@ -98,25 +91,13 @@ Prints the current working directory of the provided PID.
 test (pidwd %self) = $PWD; and echo Works
 ```
 
-## pipeset
-
-Set one or more variables to the output of the pipe.
-
-```fish
-cat README.md | pipeset -g readme
-```
-
 ## rot13
 
+A simpl{e,istic} Caesar cipher.
+
 ```fish
-echo N fvzcyr Pnrfne pvcure. | rot13 # A simple Caesar cipher.
+echo N fvzcyr Pnrfne pvcure. | rot13
 ```
-
-## title
-
-Sets the terminal title for the current shell. With `-c`/`--cwd` the current
-path will be put in the title either before, or with `-a`/`--after`, after
-the provided text.
 
 ## urlencode
 
@@ -126,9 +107,6 @@ URL encodes the provided string.
 
 [MIT](LICENCE.md)
 
-[fish shell]: https://fishshell.com 'friendly interactive shell'
-[version]: https://img.shields.io/github/tag/halostatue/fish-kiex.svg?label=Version
-
-[![Version][]]: https://github.com/halostatue/fish-kiex/releases
-[Fisher]: https://github.com/jorgebucaran/fisher
+[fisher]: https://github.com/jorgebucaran/fisher
 [fish]: https://github.com/fish-shell/fish-shell
+[fish shell]: https://fishshell.com 'friendly interactive shell'

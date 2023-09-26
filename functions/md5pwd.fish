@@ -1,25 +1,8 @@
-function md5pwd -d 'Return an MD5 hash of the current directory'
-    if is:linux
-        md5pwd:md5sum
-    else if is:mac
-        md5pwd:md5
-    else if command -sq gmd5sum
-        md5pwd:gmd5sum
-    else if command -sq md5sum
-        md5pwd:md5sum
-    else if command -sq md5
-        md5pwd:md5
+function md5pwd -d 'Return an MD5 hash of the current directory path'
+    if command --query md5
+        md5 -q -s $PWD
+    else if command --query gmd5sum md5sum
+        set --local md5sum (command --search gmd5sum md5sum)[1]
+        printf "%s" $PWD | $md5sum --text - | string split --fields 1 ' '
     end
-end
-
-function md5pwd:md5sum
-    pwd | md5sum --text - | awk '{ print $1; }'
-end
-
-function md5pwd:gmd5sum
-    pwd | gmd5sum --text - | awk '{ print $1; }'
-end
-
-function md5pwd:md5
-    md5 -q -s $PWD
 end

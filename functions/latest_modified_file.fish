@@ -1,12 +1,18 @@
 function latest_modified_file -d 'Return the filename of the latest modified file'
-    set -l max_file
-    set -l max_ftime 0
-    set -l current_ftime
+    set --local max_file
+    set --local max_ftime 0
+    set --local current_ftime
 
     for file in $argv
-        test -f $file; or continue
+        if not test -f $file
+            continue
+        end
+
         set current_ftime (date -r $file +%s)
-        test $current_ftime -ge $max_ftime; and set max_file $file
+
+        if test $current_ftime -ge $max_ftime
+            set max_file $file
+        end
     end
 
     printf '%s' $max_file

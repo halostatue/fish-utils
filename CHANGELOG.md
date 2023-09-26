@@ -1,6 +1,6 @@
 # halostatue/fish-utils Changelog
 
-## 3.0
+## 3.0 / 2023-09-26
 
 - Removed functions:
 

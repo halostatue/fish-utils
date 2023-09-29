@@ -75,6 +75,30 @@ set -l files Rakefile lib/tasks/*.rake
 echo (latest_modified_file $files) # lib/tasks/test.rake
 ```
 
+### max, min
+
+Prints the maximum value from the provided list.
+
+The comparison must be done on numeric values, but comparisons can be done with
+the `--using` option to specify a program and arguments to run against the
+provided list.
+
+```fish
+$ max 31 25 92 32
+92
+$ min 31 25 92 32
+25
+$ max --using 'path mtime' *.md
+CHANGELOG.md
+$ max --using 'path mtime' *.md
+LICENCE.md
+```
+
+#### Option
+
+- `-u`, `--using`: A string representing the command to be run to get a numeric
+  value for comparison.
+
 ### md5pwd
 
 Creates an MD5 hash for the current working directory.

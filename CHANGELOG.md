@@ -1,5 +1,13 @@
 # halostatue/fish-utils Changelog
 
+## 3.0.1 / 2023-09-29
+
+- Added `max` and `min` functions. Modified `latest_modified_file` to use the
+  new `max` function. These functions are also made available as `__max` and
+  `__min`.
+
+- Fixed various issues around usage and error messages added as part of 3.0.
+
 ## 3.0 / 2023-09-26
 
 - Removed functions:

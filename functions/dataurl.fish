@@ -5,14 +5,14 @@ function dataurl --description 'Create a data: URL from FILE'
     or return 1
 
     if not set --query argv[1]
-        echo >&2 "Error: file must be specified\n"$usage
+        printf >&2 "Error: file must be specified\n%s\n" $usage
         return 1
     end
 
     set --local file $argv[1]
 
     if not test -f $file
-        echo >&2 "Error: file "$file" does not exist\n"$usage
+        printf >&2 "Error: file %s does not exist\n%s\n" $file $usage
     end
 
     set --local mime_type (file -b --mime-type $file)

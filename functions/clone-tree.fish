@@ -1,26 +1,31 @@
 function clone-tree --description 'Clones source into the target'
-    argparse --exclusive p,v k/keep-root p/progress v/verbose -- $argv
+    argparse --exclusive p,v h/help k/keep-root p/progress v/verbose -- $argv
     or return 1
 
-    set --local usage "Usage: "(status function)"SOURCE TARGET [--progress|--verbose] [--keep-root]"
+    set --local usage "Usage: "(status function)" SOURCE TARGET [--progress|--verbose] [--keep-root]"
+
+    if set --query _flag_help
+        echo $usage
+        return 0
+    end
 
     if not set --query argv[1]
-        echo >&2 "Error: Missing source\n"$usage
+        printf >&2 "Error: Missing source\n%s\n" $usage
         return 1
     end
 
     if not set --query argv[2]
-        echo >&2 "Error: Missing target\n"$usage
+        printf >&2 "Error: Missing target\n%s\n" $usage
         return 1
     end
 
     if not test -d $argv[1]
-        echo >&2 "Error: source path "$argv[1]" must be a directory\n"$usage
+        printf >&2 "Error: source path %s must be a directory\n%s\n" $argv[1] $usage
         return 1
     end
 
     if not test -d $argv[2] && test -e $argv[2]
-        echo >&2 "Error: target "$argv[2]" exists but is not a directory\n"$usage
+        echo >&2 "Error: target %s exists but is not a directory\n%s\n" $argv[2] $usage
         return 1
     end
 
@@ -43,7 +48,6 @@ function clone-tree --description 'Clones source into the target'
     if set --query _flag_verbose
         set extract {$extract}v
     end
-
 
     set --local target_name $source' -> '$target_root
 

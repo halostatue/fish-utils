@@ -1,5 +1,20 @@
 # halostatue/fish-utils Changelog
 
+## 4.0.0 / 2024-12-29
+
+- Update Code of Conduct to Contributor Covenant 2.1.
+
+- Added completions.
+
+- Removed `color_test` without replacement.
+
+- Added comments to help identify the source of plugins when installed with
+  Fisher.
+
+- Added a GitHub Action for testing. Converted makefile to casey/just.
+
+- From this release, release tags will drop `.x` (e.g., `@v4`, `@v4.0`).
+
 ## 3.0.1 / 2023-09-29
 
 - Added `max` and `min` functions. Modified `latest_modified_file` to use the
@@ -29,9 +44,9 @@
   does not work properly, but `not test …` does. The use of `command` was
   unnecessary.
 
-- Changed `dataurl` to use `string join` instead of `tr -d`. Also added
-  a `--copy` parameter that uses `fish_clipboard_copy` to copy the data URL to
-  the clipboard. It is always printed.
+- Changed `dataurl` to use `string join` instead of `tr -d`. Also added a
+  `--copy` parameter that uses `fish_clipboard_copy` to copy the data URL to the
+  clipboard. It is always printed.
 
 - Reworked `clone-tree` for improved performance, cross-platform behaviour, and
   usability. The default behaviour is different from previous versions of
@@ -42,9 +57,9 @@
   behaviour can be maintained with the `--keep-root` flag.
 
 - Updated `md5pwd` to no longer use `is:linux` or `is:mac`. Instead, it only
-  checks for `md5`, `md5sum`, and `gmd5sum`. Fixed a bug with the output
-  of the `{,g}md5sum` path where the implicit newline of `pwd` was being
-  included in the calculation.
+  checks for `md5`, `md5sum`, and `gmd5sum`. Fixed a bug with the output of the
+  `{,g}md5sum` path where the implicit newline of `pwd` was being included in
+  the calculation.
 
 - Updated `mess` to be a little more verbose if arguments are provided and the
   targets do not exist. Also change into the link directory instead of the dated
@@ -63,8 +78,7 @@
   using `fisher`.
 
 - Removed network functions from `halostatue/fish-utils` and put them in
-  `halostatue/fish-utils-net`. It is necessary to add this to your
-  `fishfile`.
+  `halostatue/fish-utils-net`. It is necessary to add this to your `fishfile`.
 
 - Added a bunch of new functions, often found from other locations and/or
   translated from other shell scripts.

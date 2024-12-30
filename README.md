@@ -1,44 +1,34 @@
 # halostatue/fish-utils
 
-Utility functions for [fish shell][]. Most have been ported from my zsh
-dotfiles.
+Utility functions for [fish shell][fish shell].
 
-<img src="https://img.shields.io/github/tag/halostatue/fish-kiex.svg?label=Version" alt "">
+[![Version][]](https://github.com/halostatue/fish-utils/releases)
 
 ## Installation
 
-Install with [Fisher][] (recommended):
+Install with [Fisher][Fisher].
 
 ```fish
-fisher install halostatue/fish-utils-core halostatue/fish-utils
+fisher install halostatue/fish-utils@v4
 ```
-
-<details>
-<summary>Not using a package manager?</summary>
-
----
-
-Copy `functions/*.fish` to your fish configuration directory preserving the
-directory structure.
-
-</details>
 
 ### System Requirements
 
-- [fish][] 3.0+
+- [fish][fish] 3.0+
+- [halostatue/fish-utils-core][hfuc] 3.0+
 
 ## Functions
 
-### `clone-tree SOURCE TARGET [OPTIONS]
+### `clone-tree`
 
 Clones the entire directory structure of a `SOURCE` directory into another,
 using tar with pipes. If `TARGET` does not exist, it will be created.
 
 ```fish
-clone-tree source target
+clone-tree SOURCE TARGET
 ```
 
-#### Options
+#### `clone-tree` flags
 
 - `-p`, `--progress`: Enables the display of a progress bar. If `pv` is not
   available, acts the same as `--verbose`. Mutually exclusive with `--verbose`.
@@ -50,24 +40,26 @@ clone-tree source target
   the target files. That is, `clone-tree --keep-root SOURCE TARGET` will produce
   the output of `TARGET/(basename SOURCE)/...`.
 
-### `color_test [--list[=SCALE]]`
+### `dataurl`
 
-Displays either a color test list or a color test grid. If the list
-
-### dataurl
-
-Creates a data-url base64 encoded value of the file.
+Creates a data URL (base 64 encoded) for the contents of the provided file.
 
 ```fish
-dataurl image.jpg | pbcopy
+dataurl --copy image.jpg
 ```
 
-### latest_modified_file
+#### `dataurl` flags
+
+- `copy`: Copy the resulting data URL to the clipboard in addition to printing
+  it.
+
+- `property`: Specify the property for this data URL.
+
+### `latest_modified_file`
 
 Given a list of files, returns the file that was most recently updated by
-mtime. Because of limitations of fish, it is not possible to pass wildcards
-that have no match to this function without first assigning them to a
-variable.
+`mtime`. Because of limitations of fish, it is not possible to pass wild cards
+that have no match to this function without first assigning them to a variable.
 
 ```fish
 echo (latest_modified_file Rakefile Gemfile) # Rakefile
@@ -75,9 +67,9 @@ set -l files Rakefile lib/tasks/*.rake
 echo (latest_modified_file $files) # lib/tasks/test.rake
 ```
 
-### max, min
+### `max`, `__max`, `min`, and `__min`
 
-Prints the maximum value from the provided list.
+Prints the maximum/minimum value from the provided list.
 
 The comparison must be done on numeric values, but comparisons can be done with
 the `--using` option to specify a program and arguments to run against the
@@ -94,43 +86,45 @@ $ max --using 'path mtime' *.md
 LICENCE.md
 ```
 
-#### Option
+#### `max`, `__max`, `min`, and `__min` flags
 
 - `-u`, `--using`: A string representing the command to be run to get a numeric
   value for comparison.
 
-### md5pwd
+### `md5pwd`
 
 Creates an MD5 hash for the current working directory.
 
-### mess
+### `mess`
 
 Creates a working 'mess' directory where new things may be played with.
 
-## pidwd
+## `pidwd`
 
 Prints the current working directory of the provided PID.
 
 ```fish
-test (pidwd %self) = $PWD; and echo Works
+test (pidwd $fish_pid) = $PWD; and echo Works
 ```
 
-## rot13
+## `rot13`
 
-A simpl{e,istic} Caesar cipher.
+A simple/simplistic Caesar cipher.
 
 ```fish
-echo N fvzcyr Pnrfne pvcure. | rot13
+echo N fvzcyr/fvzcyvfgvp Pnrfne pvcure. | rot13
 ```
 
-## urlencode
+## `urlencode`
 
 URL encodes the provided string.
 
-## License
+## Licence
 
 [MIT](LICENCE.md)
 
 [fisher]: https://github.com/jorgebucaran/fisher
 [fish]: https://github.com/fish-shell/fish-shell
 [fish shell]: https://fishshell.com 'friendly interactive shell'
+[version]: https://img.shields.io/github/tag/halostatue/fish-utils.svg?label=Version
+[hfuc]: https://github.com/halostatue/fish-utils-core

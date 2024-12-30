@@ -1,3 +1,5 @@
+# @halostatue/fish-utils/functions/clone-tree.fish
+
 function clone-tree --description 'Clones source into the target'
     argparse --exclusive p,v h/help k/keep-root p/progress v/verbose -- $argv
     or return 1

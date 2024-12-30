@@ -1,3 +1,5 @@
+# @halostatue/fish-utils/functions/md5pwd.fish
+
 function md5pwd -d 'Return an MD5 hash of the current directory path'
     if command --query md5
         md5 -q -s $PWD

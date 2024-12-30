@@ -1,3 +1,5 @@
+# @halostatue/fish-utils/functions/__min.fish
+
 function __min --description 'Select the minimum value from the provided list'
     argparse --min-args=1 'u/using=' -- $argv
     or return 1

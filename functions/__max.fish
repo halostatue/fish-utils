@@ -1,3 +1,5 @@
+# @halostatue/fish-utils/functions/__max.fish
+
 function __max --description 'Print the maximum value from the provided list'
     argparse --min-args=1 'u/using=' -- $argv
     or return 1

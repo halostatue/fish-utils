@@ -1,3 +1,5 @@
+# @halostatue/fish-utils/functions/mess.fish
+
 function mess --description 'Create a mess work path'
     set --local messpath $HOME/mess
     set --local now (date +%Y/%V)

@@ -1,5 +1,9 @@
 # halostatue/fish-utils Changelog
 
+## 4.0.1 / 2025-01-02
+
+- Fix a bug for max and min when the `--using` result is an empty value.
+
 ## 4.0.0 / 2024-12-29
 
 - Update Code of Conduct to Contributor Covenant 2.1.

@@ -20,7 +20,15 @@ function __min --description 'Select the minimum value from the provided list'
             set right ($_flag_using $result)
         end
 
-        if test $left -lt $right
+        if test -z $left
+            set left 0
+        end
+
+        if test -z $right
+            set right 0
+        end
+
+        if test $right -gt $left
             set result $argv[1]
         end
 

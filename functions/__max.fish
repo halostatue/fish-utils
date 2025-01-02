@@ -20,6 +20,14 @@ function __max --description 'Print the maximum value from the provided list'
             set right ($_flag_using $result)
         end
 
+        if test -z $left
+            set left 0
+        end
+
+        if test -z $right
+            set right 0
+        end
+
         if test $left -gt $right
             set result $argv[1]
         end

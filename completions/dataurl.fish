@@ -1,6 +1,6 @@
-# @halostatue/fish-utils/completions/dataurl.fish
+# @halostatue/fish-utils/completions/dataurl.fish:v4.0.2
 
-complete -e -c dataurl
+complete --erase --command dataurl
 
-complete -c dataurl -s c -l copy -d 'Copy to clipboard'
-complete -c dataurl -s p -l property -d 'Set the property name'
+complete --command dataurl --short-option c --long-option copy --description 'Copy to clipboard'
+complete --command dataurl --short-option p --long-option property --description 'Set the property name'

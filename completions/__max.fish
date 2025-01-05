@@ -1,4 +1,4 @@
-# @halostatue/fish-utils/completions/__max.fish
+# @halostatue/fish-utils/completions/__max.fish:v4.0.2
 
-complete -e -c __max
-complete -c __max -s u -l using -d 'Convert to number using command' -x
+complete --erase --command __max
+complete --command __max --short-option u --long-option using --description 'Convert to number using command' --exclusive

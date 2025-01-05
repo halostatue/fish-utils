@@ -1,10 +1,10 @@
-# @halostatue/fish-utils/functions/mess.fish
+# @halostatue/fish-utils/functions/mess.fish:v4.0.2
 
 function mess --description 'Create a mess work path'
-    set --local messpath $HOME/mess
-    set --local now (date +%Y/%V)
-    set --local current $messpath/$now
-    set --local link $messpath/current
+    set --function messpath $HOME/mess
+    set --function now (date +%Y/%V)
+    set --function current $messpath/$now
+    set --function link $messpath/current
 
     if not test -d $current
         mkdir -p $current

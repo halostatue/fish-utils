@@ -1,4 +1,4 @@
-# @halostatue/fish-utils/completions/pidwd.fish
+# @halostatue/fish-utils/completions/pidwd.fish:v4.0.2
 
-complete -e -c pidwd
-complete -c pidwd -f -a '(__fish_complete_pids)'
+complete --erase --command pidwd
+complete --command pidwd --no-files --arguments '(__fish_complete_pids)'

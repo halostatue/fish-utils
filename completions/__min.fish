@@ -1,4 +1,4 @@
-# @halostatue/fish-utils/completions/__min.fish
+# @halostatue/fish-utils/completions/__min.fish:v4.0.2
 
-complete -e -c __min
-complete -c __min -s u -l using -d 'Convert to number using command' -x
+complete --erase --command __min
+complete --command __min --short-option u --long-option using --description 'Convert to number using command' --exclusive

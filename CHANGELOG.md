@@ -1,5 +1,13 @@
 # halostatue/fish-utils Changelog
 
+## 4.0.2 / 2025-01-05
+
+- Added version information to comment tags.
+- Switched to long flags where possible.
+- Switched to `set --function` instead of `set --local`.
+- Updated documentation.
+- Added tooling to the Justfile for easier release management.
+
 ## 4.0.1 / 2025-01-02
 
 - Fix a bug for max and min when the `--using` result is an empty value.

@@ -1,10 +1,10 @@
-# @halostatue/fish-utils/functions/clone-tree.fish
+# @halostatue/fish-utils/functions/clone-tree.fish:v4.0.2
 
 function clone-tree --description 'Clones source into the target'
     argparse --exclusive p,v h/help k/keep-root p/progress v/verbose -- $argv
     or return 1
 
-    set --local usage "Usage: "(status function)" SOURCE TARGET [--progress|--verbose] [--keep-root]"
+    set --function usage "Usage: "(status function)" SOURCE TARGET [--progress|--verbose] [--keep-root]"
 
     if set --query _flag_help
         echo $usage
@@ -31,12 +31,12 @@ function clone-tree --description 'Clones source into the target'
         return 1
     end
 
-    set --local source $argv[1]
-    set --local source_root (path dirname $source)
-    set --local source_name (path basename $source)
-    set --local target_root $argv[2]
-    set --local strip_components --strip-components 1
-    set --local extract xf
+    set --function source $argv[1]
+    set --function source_root (path dirname $source)
+    set --function source_name (path basename $source)
+    set --function target_root $argv[2]
+    set --function strip_components --strip-components 1
+    set --function extract xf
 
     if set --query _flag_keep_root
         set strip_components
@@ -51,7 +51,7 @@ function clone-tree --description 'Clones source into the target'
         set extract {$extract}v
     end
 
-    set --local target_name $source' -> '$target_root
+    set --function target_name $source' -> '$target_root
 
     if test (count $strip_components) -eq 0
         set target_name $target_name/$source_name

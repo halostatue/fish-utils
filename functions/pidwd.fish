@@ -1,4 +1,4 @@
-# @halostatue/fish-utils/functions/pidwd.fish
+# @halostatue/fish-utils/functions/pidwd.fish:v4.0.2
 
 function pidwd --description 'Get the working directory of a provided PID'
     if not set --query argv[1]

@@ -1,7 +1,7 @@
-# @halostatue/fish-utils/completions/clone-tree.fish
+# @halostatue/fish-utils/completions/clone-tree.fish:v4.0.2
 
-complete -e -c clone-tree
-complete -c clone-tree -s p -l progress -d 'Show progress bar with pv'
-complete -c clone-tree -s v -l verbose -d 'Verbose output'
-complete -c clone-tree -s h -l help -d 'Show help'
-complete -c clone-tree -s k -l keep-root -d 'Keep the root directory when cloning'
+complete --erase --command clone-tree
+complete --command clone-tree --short-option p --long-option progress --description 'Show progress bar with pv'
+complete --command clone-tree --short-option v --long-option verbose --description 'Verbose output'
+complete --command clone-tree --short-option h --long-option help --description 'Show help'
+complete --command clone-tree --short-option k --long-option keep-root --description 'Keep the root directory when cloning'

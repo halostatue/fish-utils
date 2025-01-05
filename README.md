@@ -1,8 +1,8 @@
 # halostatue/fish-utils
 
-Utility functions for [fish shell][fish shell].
+Utility functions for [fish shell][shell].
 
-[![Version][]](https://github.com/halostatue/fish-utils/releases)
+[![Version][version]](https://github.com/halostatue/fish-utils/releases)
 
 ## Installation
 
@@ -14,8 +14,7 @@ fisher install halostatue/fish-utils@v4
 
 ### System Requirements
 
-- [fish][fish] 3.0+
-- [halostatue/fish-utils-core][hfuc] 3.0+
+- [fish][fish] 3.4+
 
 ## Functions
 
@@ -125,6 +124,6 @@ URL encodes the provided string.
 
 [fisher]: https://github.com/jorgebucaran/fisher
 [fish]: https://github.com/fish-shell/fish-shell
-[fish shell]: https://fishshell.com 'friendly interactive shell'
+[shell]: https://fishshell.com 'friendly interactive shell'
 [version]: https://img.shields.io/github/tag/halostatue/fish-utils.svg?label=Version
 [hfuc]: https://github.com/halostatue/fish-utils-core

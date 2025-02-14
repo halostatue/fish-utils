@@ -1,8 +1,8 @@
 # halostatue/fish-utils
 
-Utility functions for [fish shell][shell].
-
 [![Version][version]](https://github.com/halostatue/fish-utils/releases)
+
+Utility functions for [fish shell][shell].
 
 ## Installation
 
@@ -120,7 +120,17 @@ URL encodes the provided string.
 
 ## Licence
 
-[MIT](LICENCE.md)
+[MIT](./LICENCE.md)
+
+## Change Log
+
+[CHANGELOG](./CHANGELOG.md)
+
+## Contributing
+
+- [Contributing](./CONTRIBUTING.md)
+- [Contributors](./CONTRIBUTORS.md)
+- [Code of Conduct](./CODE_OF_CONDUCT.md)
 
 [fisher]: https://github.com/jorgebucaran/fisher
 [fish]: https://github.com/fish-shell/fish-shell

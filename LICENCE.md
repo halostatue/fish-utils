@@ -2,7 +2,7 @@
 
 - SPDX-License-Identifier: [MIT][mit]
 
-Copyright © 2020–2025 Austin Ziegler
+Copyright © 2020-2025 Austin Ziegler
 
 The software in this repository is made available under the MIT license.
 

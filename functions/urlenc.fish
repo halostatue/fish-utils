@@ -1,4 +1,4 @@
-# @halostatue/fish-utils/functions/urlenc.fish:v4.0.2
+# @halostatue/fish-utils/functions/urlenc.fish:v4.1.0
 
 function urlenc --description 'url encode the passed string'
     set --function encode 'require "cgi"; print CGI.escape($_.chomp)'

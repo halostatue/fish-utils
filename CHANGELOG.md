@@ -1,5 +1,10 @@
 # halostatue/fish-utils Changelog
 
+## 4.1.0 / 2026-07-05
+
+- Added `addr`, `certp`, and `def` previously from `halostatue/fish-utils-net`
+  (now archived).
+
 ## 4.0.2 / 2025-01-05
 
 - Added version information to comment tags.

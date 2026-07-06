@@ -1,4 +1,4 @@
-# @halostatue/fish-utils/completions/clone-tree.fish:v4.0.2
+# @halostatue/fish-utils/completions/clone-tree.fish:v4.1.0
 
 complete --erase --command clone-tree
 complete --command clone-tree --short-option p --long-option progress --description 'Show progress bar with pv'

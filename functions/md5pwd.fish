@@ -1,4 +1,4 @@
-# @halostatue/fish-utils/functions/md5pwd.fish:v4.0.2
+# @halostatue/fish-utils/functions/md5pwd.fish:v4.1.0
 
 function md5pwd --description 'Return an MD5 hash of the current directory path'
     if command --query md5

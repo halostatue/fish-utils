@@ -1,4 +1,4 @@
-# @halostatue/fish-utils/functions/min.fish:v4.0.2
+# @halostatue/fish-utils/functions/min.fish:v4.1.0
 
 function min --description 'Select the minimum value from the provided list'
     set --function args $argv

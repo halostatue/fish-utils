@@ -1,4 +1,4 @@
-# @halostatue/fish-utils/functions/clone-tree.fish:v4.0.2
+# @halostatue/fish-utils/functions/clone-tree.fish:v4.1.0
 
 function clone-tree --description 'Clones source into the target'
     argparse --exclusive p,v h/help k/keep-root p/progress v/verbose -- $argv

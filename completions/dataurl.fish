@@ -1,4 +1,4 @@
-# @halostatue/fish-utils/completions/dataurl.fish:v4.0.2
+# @halostatue/fish-utils/completions/dataurl.fish:v4.1.0
 
 complete --erase --command dataurl
 

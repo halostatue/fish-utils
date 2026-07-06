@@ -1,4 +1,4 @@
-# @halostatue/fish-utils/functions/dataurl.fish:v4.0.2
+# @halostatue/fish-utils/functions/dataurl.fish:v4.1.0
 
 function dataurl --description 'Create a data: URL from FILE'
     set --function usage "Usage: "(status function)" FILE [--copy] [--property NAME]"

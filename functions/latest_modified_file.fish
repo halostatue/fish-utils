@@ -1,4 +1,4 @@
-# @halostatue/fish-utils/functions/latest_modified_file.fish:v4.0.2
+# @halostatue/fish-utils/functions/latest_modified_file.fish:v4.1.0
 
 function latest_modified_file --description 'Return the name of the latest modified file'
     argparse --min-args 1 -- $argv

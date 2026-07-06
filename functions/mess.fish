@@ -1,4 +1,4 @@
-# @halostatue/fish-utils/functions/mess.fish:v4.0.2
+# @halostatue/fish-utils/functions/mess.fish:v4.1.0
 
 function mess --description 'Create a mess work path'
     set --function messpath $HOME/mess
